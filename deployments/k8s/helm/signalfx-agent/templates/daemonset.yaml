@@ -58,10 +58,8 @@ spec:
       tolerations:
       {{ if .Values.runOnMaster -}}
       - effect: NoSchedule
-        key: node.alpha.kubernetes.io/role
         operator: Exists
-      - effect: NoSchedule
-        key: node-role.kubernetes.io/master
+      - effect: NoExecute
         operator: Exists
       {{- end }}
       {{ range .Values.tolerations -}}
